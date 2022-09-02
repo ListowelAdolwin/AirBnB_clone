@@ -80,9 +80,3 @@ class BaseModel:
         create_dict["__class__"] = __class__.__name__
 
         return create_dict
-    '''
-        self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.__dict__["__class__"] = __class__.__name__
-        return self.__dict__
-    '''
