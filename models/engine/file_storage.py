@@ -7,6 +7,7 @@ Converts objects to JSON and vice versa
 
 import json
 from models.base_model import BaseModel
+import os
 
 
 class FileStorage:
@@ -38,22 +39,26 @@ class FileStorage:
         for key, value in FileStorage.__objects.items():
             new_dict[key] = value.to_dict()
 
-        with open(FileStorage.__file_path, "w") as f:
-            json.dump(new_dict, f, indent=4)
+        try:
+            with open(FileStorage.__file_path, "w") as f:
+                json.dump(new_dict, f, indent=4)
+        except FileNotFoundError:
+            pass
 
     def reload(self):
         try:
-            _dict = {}
-            with open(FileStorage.__file_path, "r") as f:
-                _dict = json.load(f)
+            if (os.path.isfile(FileStorage.__file_path)):
+                _dict = {}
+                with open(FileStorage.__file_path, "r") as f:
+                    _dict = json.load(f)
 
-            new_dict = {}
-            for obj_name, obj_details in _dict.items():
-                obj = BaseModel(**obj_details)
-                new_dict[obj_name] = obj
+                new_dict = {}
+                for key, value in _dict.items():
+                    obj = BaseModel(**value)
+                    new_dict[key] = obj
 
-            FileStorage.__objects = new_dict
-            return new_dict
-            
+                FileStorage.__objects = new_dict
+                #return new_dict
+
         except FileNotFoundError:
             pass
