@@ -8,7 +8,7 @@ Converts objects to JSON and vice versa
 import json
 from models.base_model import BaseModel
 import os
-
+from models.user import User
 
 class FileStorage:
     """
@@ -50,11 +50,12 @@ class FileStorage:
             if (os.path.isfile(FileStorage.__file_path)):
                 _dict = {}
                 with open(FileStorage.__file_path, "r") as f:
-                    _dict = json.load(f)
+                    _dict = json.load(f)    
 
                 new_dict = {}
                 for key, value in _dict.items():
-                    obj = BaseModel(**value)
+                    class_name = key.split(".")[0]
+                    obj = eval(class_name)(**value)
                     new_dict[key] = obj
 
                 FileStorage.__objects = new_dict
