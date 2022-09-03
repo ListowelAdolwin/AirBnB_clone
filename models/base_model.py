@@ -75,7 +75,7 @@ class BaseModel:
         """
         Returns a dictionary containing all the key-values of the
         the __dict__ of the instance
-               
+
         """
 
         create_dict = self.__dict__.copy()
