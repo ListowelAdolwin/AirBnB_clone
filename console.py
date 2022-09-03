@@ -79,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
 
         key = ".".join(args)
         if key not in reloaded_json.keys():
-            print("** instance not found **")
+            print("** no instance found **")
             return False
 
         else:
