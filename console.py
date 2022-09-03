@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
     Class to implement the basic commands of
     the interpreter
     """
-    classes_list = ['BaseModel', 'User']
+    classes_list = ['BaseModel', 'User', 'State', 'Place', 'City', 'Amenity', 'Review']
 
     prompt = '(hbnd) '
 
