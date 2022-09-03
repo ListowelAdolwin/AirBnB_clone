@@ -28,11 +28,10 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def help_EOF(self):
-        'ged'
         print("Enter Cntrl-D or EOF to quit the interpreter\n")
 
     def do_quit(self, line):
-        'hge'
+        " quit to exit the interpreter "
         return True
 
     def help_quit(self):
