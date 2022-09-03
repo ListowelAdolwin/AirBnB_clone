@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Handles all amenities
+Handles Amenities
 """
 
 from models.base_model import BaseModel
@@ -8,6 +8,6 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """
-    Class to deal with all amenities instances
+    Class to deal all with amenities
     """
     name = ""
