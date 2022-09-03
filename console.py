@@ -9,10 +9,10 @@ from models import storage
 import json
 import shlex
 from models.user import User
-# from models.city import City
-# from models.state import State
-# from models.place import Place
-# from models.revier import Review
+from models.city import City
+from models.state import State
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
