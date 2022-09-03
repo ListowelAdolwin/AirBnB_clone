@@ -10,6 +10,9 @@ from datetime import datetime
 import models
 
 
+tformat = "%Y-%m-%dT%H:%M:%S.%f"
+
+
 class BaseModel:
     """
     This is the base class from which all other
@@ -72,11 +75,11 @@ class BaseModel:
         """
         Returns a dictionary containing all the key-values of the
         the __dict__ of the instance
-        """
- 
+               """
+
         create_dict = self.__dict__.copy()
-        create_dict["created_at"] = create_dict["created_at"].strftime("%Y-%m-%dT%H:%M:%S.%f")
-        create_dict["updated_at"] = create_dict["updated_at"].strftime("%Y-%m-%dT%H:%M:%S.%f")
+        create_dict["created_at"] = create_dict["created_at"].strftime(tformat)
+        create_dict["updated_at"] = create_dict["updated_at"].strftime(tformat)
         create_dict["__class__"] = __class__.__name__
 
         return create_dict
