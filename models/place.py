@@ -10,6 +10,7 @@ class Place(BaseModel):
     """
     Class to deal with all instances of Place
     """
+
     city_id = ""  # will be city id
     user_id = ""
     name = ""
@@ -21,4 +22,3 @@ class Place(BaseModel):
     latitude = 0
     longitude = 0
     amenity_ids = []
-
