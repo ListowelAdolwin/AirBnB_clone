@@ -130,16 +130,19 @@ class HBNBCommand(cmd.Cmd):
                 print(str(reloaded_json[key]))
             return False
 
-        args = shlex.split(line)
+        args = line.split()
         if args[0] not in HBNBCommand.classes_list:
             print("** class doesn't exist **")
 
         else:
             for key, value in reloaded_json.items():
-                if type(value) is eval(args[0]):
-                    print(str(reloaded_json[key]))
-                else:
-                    return False
+                if key.split(".")[0] == args[0]:
+                    print(reloaded_json[key])
+            #for key, value in reloaded_json.items():
+             #   if type(value) is eval(args[0]):
+              #      print(str(reloaded_json[key]))
+               # else:
+            return False
 
     def help_all(self):
         print(" Use all with or without arguments to print all attributes")
@@ -152,20 +155,20 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 1:
             print("** class name missing **")
 
+        elif args[0] not in HBNBCommand.classes_list:
+            print("** class doesn't exist **")    
+
         elif len(args) < 2:
             print("** instance id is missing **")
+
+        elif (args[0]+"."+args[1]) not in relooaded_json.keys():
+            print("** instance doesn't exist")
 
         elif len(args) < 3:
             print("** attribute name missing **")
 
         elif len(args) < 4:
             print("** value missing **")
-
-        elif args[0] not in HBNBCommand.classes_list:
-            print("** class doesn't exist **")
-
-        elif (args[0]+"."+args[1]) not in relooaded_json.keys():
-            print("** instance doesn't exist")
 
         elif (args[2]) in ["created_at", "id", "updated_at"]:
             print(f"** can't update {args[2]}")
@@ -174,9 +177,23 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = ".".join(args[2:4])
             key = args[0] + "." + args[1]
-            setattr((relooaded_json[key]), args[2], args[3])
-            storage.all()[key].save()
-            return False
+            if type(args[3]) in [int, float, str]:
+
+                if type(args[3]) == int:
+                    args[3] = int(args[3])
+                
+                elif type(args[0]) == float:
+                    args[3] = float(args[3])
+                    
+                elif type(args[3]) == str:
+                    args[3] = str(args[3])
+
+                setattr((relooaded_json[key]), args[2], args[3])
+                storage.all()[key].save()
+                return False
+            else:
+                print("argument can't be updated")
+                return False
 
     def help_update(self):
         print("Use update to update attributes")
