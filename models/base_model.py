@@ -75,11 +75,12 @@ class BaseModel:
         """
         Returns a dictionary containing all the key-values of the
         the __dict__ of the instance
-               """
+               
+        """
 
         create_dict = self.__dict__.copy()
         create_dict["created_at"] = create_dict["created_at"].strftime(tformat)
         create_dict["updated_at"] = create_dict["updated_at"].strftime(tformat)
-        create_dict["__class__"] = __class__.__name__
+        create_dict["__class__"] = self.__class__.__name__
 
         return create_dict
