@@ -9,10 +9,10 @@ from models import storage
 import json
 import shlex
 from models.user import User
-#from models.city import City
-#from models.state import State
-#from models.place import Place
-#from models.revier import Review
+# from models.city import City
+# from models.state import State
+# from models.place import Place
+# from models.revier import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -32,13 +32,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, line):
         return True
-    
+
     def help_quit(self):
         print("quit command to exit the interpreter\n")
 
     def emptyline(self):
         return False
-    
+
     def do_create(self, line):
         if not line:
             print("** class name missing **")
@@ -56,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
             print(obj.id)
 
     def help_create(self):
-        print("Use create with a class name to create an instance of the class\n")
+        print("Use create to create an instance of a class\n")
 
     def do_show(self, line):
         if not line:
@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         args = line.split()
-        
+
         if args[0] not in HBNBCommand.classes_list:
             print("** class doesn't exist **")
             return False
@@ -72,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return False
-        
+
         storage.reload()
         reloaded_json = storage.all()
 
@@ -84,10 +84,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(reloaded_json[key])
             return False
-    
+
     def help_show(self):
-        print("Use show with a class name and instance id to display the instance\n")
-    
+        print("Use show to display an instance\n")
+
     def do_destroy(self, line):
         if not line:
             print("** class name missing **")
@@ -105,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
 
         storage.reload()
         reloaded_json = storage.all()
-        
+
         key = ".".join(args)
         if key not in reloaded_json:
             print("** instance not found **")
@@ -114,12 +114,12 @@ class HBNBCommand(cmd.Cmd):
         else:
             del reloaded_json[key]
             storage.save()
-            
+
     def help_destroy(self):
-        print("Use destroy with a class name and instance id to delete the instance\n")
+        print("Use destroy to destroy an object\n")
 
     def do_all(self, line):
-        
+
         new_list = []
         storage.reload()
         reloaded_json = storage.all()
@@ -139,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
                     print(str(reloaded_json[key]))
                 else:
                     return False
-                    
+
     def help_all(self):
         print(" Use all with or without arguments to print all attributes")
 
@@ -159,17 +159,17 @@ class HBNBCommand(cmd.Cmd):
 
         elif len(args) < 4:
             print("** value missing **")
-        
+
         elif args[0] not in HBNBCommand.classes_list:
             print("** class doesn't exist **")
-        
+
         elif (args[0]+"."+args[1]) not in relooaded_json.keys():
             print("** instance doesn't exist")
 
         elif (args[2]) in ["created_at", "id", "updated_at"]:
             print(f"** can't update {args[2]}")
             return False
-            
+
         else:
             key = ".".join(args[2:4])
             key = args[0] + "." + args[1]
@@ -179,8 +179,6 @@ class HBNBCommand(cmd.Cmd):
 
     def help_update(self):
         print("Use update to update attributes")
-
-
 
 
 if __name__ == "__main__":
