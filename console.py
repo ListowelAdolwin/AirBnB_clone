@@ -138,10 +138,7 @@ class HBNBCommand(cmd.Cmd):
             for key, value in reloaded_json.items():
                 if key.split(".")[0] == args[0]:
                     print(reloaded_json[key])
-            #for key, value in reloaded_json.items():
-             #   if type(value) is eval(args[0]):
-              #      print(str(reloaded_json[key]))
-               # else:
+
             return False
 
     def help_all(self):
@@ -156,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
 
         elif args[0] not in HBNBCommand.classes_list:
-            print("** class doesn't exist **")    
+            print("** class doesn't exist **")
 
         elif len(args) < 2:
             print("** instance id is missing **")
@@ -181,10 +178,10 @@ class HBNBCommand(cmd.Cmd):
 
                 if type(args[3]) == int:
                     args[3] = int(args[3])
-                
+
                 elif type(args[0]) == float:
                     args[3] = float(args[3])
-                    
+
                 elif type(args[3]) == str:
                     args[3] = str(args[3])
 
