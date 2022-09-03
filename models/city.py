@@ -11,5 +11,5 @@ class City(BaseModel):
     """
     Class to deal with all City attributes
     """
-    state_id = State.id
+    state_id = ""
     name = ""
