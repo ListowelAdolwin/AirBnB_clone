@@ -63,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
 
-        args = shlex.split(line)
+        args = line.split()
         
         if args[0] not in HBNBCommand.classes_list:
             print("** class doesn't exist **")
@@ -96,11 +96,11 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
 
         if args[0] not in HBNBCommand.classes_list:
-            print("*** class doesn't exist ***")
+            print("** class doesn't exist **")
             return False
 
         if len(args) < 2:
-            print("*** instance id missing ***")
+            print("** instance id missing **")
             return False
 
         storage.reload()
@@ -108,7 +108,7 @@ class HBNBCommand(cmd.Cmd):
         
         key = ".".join(args)
         if key not in reloaded_json:
-            print("*** instance not found ***")
+            print("** instance not found **")
             return False
 
         else:
