@@ -8,11 +8,11 @@ import unittest
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
-#from models.state import State
-#from models.city import City
-#from models.place import Place
-#from models.amenity import Amenity
-#from models.review import Review
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 from console import HBNBCommand
 from io import StringIO
 from unittest.mock import patch
@@ -489,6 +489,7 @@ it.\nUsage: create <ClassName>")
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help create"))
             self.assertEqual(msg, f.getvalue().strip())
+
     def test_help_destroy(self):
         """
             test the help with create
@@ -525,6 +526,7 @@ by adding or changing attribute values.\
         with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help update"))
             self.assertEqual(msg, f.getvalue().strip())
+
 
 if __name__ == '__main__':
     unittest.main()
