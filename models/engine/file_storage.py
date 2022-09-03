@@ -10,6 +10,7 @@ from models.base_model import BaseModel
 import os
 from models.user import User
 
+
 class FileStorage:
     """
     This class contain methods that deals with the storage
@@ -50,7 +51,7 @@ class FileStorage:
             if (os.path.isfile(FileStorage.__file_path)):
                 _dict = {}
                 with open(FileStorage.__file_path, "r") as f:
-                    _dict = json.load(f)    
+                    _dict = json.load(f)
 
                 new_dict = {}
                 for key, value in _dict.items():
@@ -59,7 +60,6 @@ class FileStorage:
                     new_dict[key] = obj
 
                 FileStorage.__objects = new_dict
-                #return new_dict
 
         except FileNotFoundError:
             pass
