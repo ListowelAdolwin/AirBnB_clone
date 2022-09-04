@@ -3,7 +3,7 @@
 The Airbnb clone project is all about creating a clone of the [Airbnb](https://www.airbnb.com/) Web Application.
 Note: not all of the features of the Web App is included here.
 
-#### Usage
+### Usage
 First, clone this repository to your local machine.
 To launch the console application in interactive mode simply run:
 
@@ -34,15 +34,15 @@ $ ./console.py
 $
 ```
 
-## Features
+# Features
 
-### Command Interpreter
+## Command Interpreter
 
-#### Description
+### Description
 
 
 The Command Interpreter, for administrative purposes is used to manage the entire application from the command line. 
-##### Objects
+#### Objects
 The objects implemented are;
 + ###### User
 The user has attributes such as name, password, first name and last name, all managed by the interpreter.
@@ -58,7 +58,7 @@ Place manges the name, City id, user id, description, number of rooms, number of
 Here is where reviewing is managed.
 It keeps the place id, user id and the rewiew
 
-##### Commands
+#### Commands
 The implemmented commands includes;
 + * **create**
   * Usage: `create <class>` 
@@ -145,4 +145,4 @@ to run all tests or use
 ```
 python -m unittest tests/test_user.py
 ```
-to run specific tests
+to run a specific test
