@@ -196,6 +196,24 @@ class HBNBCommand(cmd.Cmd):
     def help_update(self):
         print("Use update to update attributes")
 
+    def do_count(self, line):
+        args = line.split()
+        storage.reload()
+        reloaded_json = storage.all()
+        instance_count = 0
+
+        if args[0] not in HBNBCommand.classes_list:
+            print("** class doesn't exist **")
+            return False
+        
+        for key in reloaded_json.keys():
+            if line in key:
+                instance_count += 1
+        print(instance_count)
+
+    def help_count(self):
+        print("Use count to print an instance count")
+
     def default(self, line):
 
         args = line.split(".")
