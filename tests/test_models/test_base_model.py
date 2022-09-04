@@ -33,7 +33,7 @@ class TestBase(unittest.TestCase):
         """
             Checks that the type of the id is string.
         """
-        self.assertEqual('<class "str">', str(type(self.my_model.id)))
+        self.assertEqual("<class 'str'>", str(type(self.my_model.id)))
 
     def test_ids_differ(self):
         """
@@ -85,7 +85,7 @@ class TestBase(unittest.TestCase):
             Checks that the to_dict method return type.
         """
 
-        self.assertEqual('<class "dict">',
+        self.assertEqual("<class 'dict'>",
                          str(type(self.my_model.to_dict())))
 
     def test_to_dict_class(self):
@@ -99,7 +99,7 @@ class TestBase(unittest.TestCase):
         """
             Checks the type of the value of updated_at.
         """
-        self.assertEqual('<class "str">',
+        self.assertEqual("<class 'str'>",
                          str(type((self.my_model.to_dict())["updated_at"])))
 
     def test_to_dict_type_created_at(self):
@@ -107,7 +107,7 @@ class TestBase(unittest.TestCase):
             Checks the type of the value of created_at.
         """
         tmp = self.my_model.to_dict()
-        self.assertEqual('<class "str">', str(type(tmp["created_at"])))
+        self.assertEqual("<class 'str'>", str(type(tmp["created_at"])))
 
     def test_kwargs_instantiation(self):
         """
