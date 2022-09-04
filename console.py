@@ -23,7 +23,7 @@ class HBNBCommand(cmd.Cmd):
     """
     classes_list = ['BaseModel', 'User', 'State', 'Place', 'City', 'Amenity', 'Review']
 
-    prompt = '(hbnd) '
+    prompt = '(hbnb) '
 
     def do_EOF(self, line):
         return True
@@ -110,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
 
         key = ".".join(args)
         if key not in reloaded_json:
-            print("** instance not found **")
+            print("** no instance found **")
             return False
 
         else:
@@ -157,10 +157,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
         elif len(args) < 2:
-            print("** instance id is missing **")
+            print("** instance id missing **")
 
         elif (args[0]+"."+args[1]) not in relooaded_json.keys():
-            print("** instance doesn't exist")
+            print("** no instance found **")
 
         elif len(args) < 3:
             print("** attribute name missing **")
@@ -190,7 +190,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.all()[key].save()
                 return False
             else:
-                print("argument can't be updated")
+                print("** invalid value type **")
                 return False
 
     def help_update(self):
