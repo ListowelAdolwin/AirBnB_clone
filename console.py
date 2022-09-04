@@ -21,7 +21,8 @@ class HBNBCommand(cmd.Cmd):
     Class to implement the basic commands of
     the interpreter
     """
-    classes_list = ['BaseModel', 'User', 'State', 'Place', 'City', 'Amenity', 'Review']
+    classes_list = ['BaseModel', 'User', 'State',
+                    'Place', 'City', 'Amenity', 'Review']
 
     prompt = '(hbnb) '
 
@@ -205,7 +206,7 @@ class HBNBCommand(cmd.Cmd):
         if args[0] not in HBNBCommand.classes_list:
             print("** class doesn't exist **")
             return False
-        
+
         for key in reloaded_json.keys():
             if line in key:
                 instance_count += 1
@@ -260,15 +261,18 @@ class HBNBCommand(cmd.Cmd):
                                 value.append(tmps[index])
 
                         for index in range(len(key)):
-                            msg = tt + " " + key[index] + ' "' + value[index] + '"'
+                            msg = tt + " " + key[index] + ' "' +\
+                                    value[index] + '"'
                             self.do_update(msg)
                     else:
                         attr_nm = args[1].split('"')[3]
                         attrval = args[1].split('"')[5]
 
-                        self.do_update(tt + " " + attr_nm + " \"" + attrval + "\"")
+                        self.do_update(tt + " " + attr_nm + " \"" +
+                                       attrval + "\"")
         else:
             print(f"*** Unknown syntax: {args[0]}")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
