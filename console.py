@@ -211,6 +211,7 @@ class HBNBCommand(cmd.Cmd):
             if line in key:
                 instance_count += 1
         print(instance_count)
+        instance_count = 0
 
     def help_count(self):
         print("Use count to print an instance count")
