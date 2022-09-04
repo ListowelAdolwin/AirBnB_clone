@@ -366,7 +366,7 @@ class TestHBNBCommand_dot_update(unittest.TestCase):
             with patch('sys.stdout', new=StringIO()) as f:
                 self.assertFalse(HBNBCommand().onecmd('{}\
                                  .update(" "," "," ")'.format(kk[0])))
-                self.assertEqual("** no instance found **",
+                self.assertEqual("** class doesn't exist **",
                                  f.getvalue().strip())
 
     def test_HBNBCommand_dot_update_existing_instance(self):
