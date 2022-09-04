@@ -196,6 +196,61 @@ class HBNBCommand(cmd.Cmd):
     def help_update(self):
         print("Use update to update attributes")
 
+    def default(self, line):
+
+        args = line.split(".")
+
+        if args[0] in HBNBCommand.classes_list:
+            eval(args[0])
+            if len(args) > 1:
+                if "show" in args[1]:
+                    obj_id = args[1].split('"')[1]
+                    msg = args[0] + " " + obj_id
+                    self.do_show(msg)
+
+                elif "destroy" in args[1]:
+                    obj_id = args[1].split('"')[1]
+                    msg = args[0] + " " + obj_id
+                    self.do_destroy(msg)
+
+                elif "all" in args[1]:
+                    msg = args[0]
+                    self.do_all(msg)
+
+                elif "count" in args[1]:
+                    msg = args[0]
+                    self.do_count(msg)
+
+                elif "update" in args[1]:
+                    obj_id = args[1].split('"')[1]
+                    tt = args[0] + " " + obj_id
+                    if '{' in args[1]:
+                        tmp = args[1].split('{')[1]
+                        tmp = tmp.replace("})", "")
+                        tmp = tmp.replace('"', "")
+                        tmp = tmp.replace("'", "")
+                        tmp = tmp.replace(",", "")
+                        tmp = tmp.replace(":", "")
+                        tmps = tmp.split()
+
+                        key = []
+                        value = []
+                        for index in range(len(tmps)):
+                            if index % 2 == 0:
+                                key.append(tmps[index])
+                            else:
+                                value.append(tmps[index])
+
+                        for index in range(len(key)):
+                            msg = tt + " " + key[index] + ' "' + value[index] + '"'
+                            self.do_update(msg)
+                    else:
+                        attr_nm = args[1].split('"')[3]
+                        attrval = args[1].split('"')[5]
+
+                        self.do_update(tt + " " + attr_nm + " \"" + attrval + "\"")
+        else:
+            print(f"*** Unknown syntax: {args[0]}")
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
