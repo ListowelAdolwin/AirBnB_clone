@@ -272,7 +272,8 @@ class HBNBCommand(cmd.Cmd):
                         self.do_update(tt + " " + attr_nm + " \"" +
                                        attrval + "\"")
         else:
-            print(f"*** Unknown syntax: {args[0]}")
+            print("** class doesn't exist **")
+            # print(f"*** Unknown syntax: {args[0]}")
 
 
 if __name__ == "__main__":
